@@ -1,4 +1,4 @@
-import { Hello } from '../src';
+import { Test } from '../src';
 
 test('hello', () => {
   expect(new Hello().sayHello()).toBe('hello, world!');

@@ -9,7 +9,7 @@ import * as fw from '@aws-cdk/aws-networkfirewall';
 import * as cdk from '@aws-cdk/core';
 import { CustomResource } from '@aws-cdk/core';
 
-export class Hello {
+export class Test {
   public sayHello() {
     return 'hello, world!';
   }
