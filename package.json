@@ -1,5 +1,6 @@
 {
   "name": "cdk-nwfirewall",
+  "description": "AWS Network Firewall Accelerator",
   "repository": {
     "type": "git",
     "url": "https://github.com/vennemp/cdk-nwfirewall.git"

@@ -1,6 +1,7 @@
 const { awscdk } = require('projen');
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Matthew Venne',
+  description: 'AWS Network Firewall Accelerator',
   authorAddress: 'vennemp@gmail.com',
   cdkVersion: '1.97.0',
   docgen: true,
