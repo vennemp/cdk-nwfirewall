@@ -50,7 +50,7 @@ jobs:
           name: build-artifact
           path: dist
     container:
-      image: jsii/superchain:1-buster-slim-node14
+      image: jsii/superchain:1-buster-slim
   self-mutation:
     needs: build
     runs-on: ubuntu-latest

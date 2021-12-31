@@ -2,7 +2,7 @@ const { awscdk } = require('projen');
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Matthew Venne',
   authorAddress: 'vennemp@gmail.com',
-  cdkVersion: '2.1.0',
+  cdkVersion: '1.97.0',
   docgen: true,
   cdkVersionPinning: false,
   releaseToNpm: true,
