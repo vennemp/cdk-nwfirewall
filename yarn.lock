@@ -49,7 +49,7 @@
     "@aws-cdk/core" "1.137.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-ec2@*", "@aws-cdk/aws-ec2@1.137.0":
+"@aws-cdk/aws-ec2@1.137.0", "@aws-cdk/aws-ec2@^1.137.0":
   version "1.137.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-ec2/-/aws-ec2-1.137.0.tgz#987f78f68be6f741229b3e2ae3ae78219f6be978"
   integrity sha512-Ms/0SYOECB9tEggjgQbKe+8aqzZaT/sKnDckiDJjtI8CG/q53ETnrhqDIZgyUc96trAnXuExuEnTxlexoB3BLA==
@@ -113,7 +113,7 @@
     "@aws-cdk/core" "1.137.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-iam@*", "@aws-cdk/aws-iam@1.137.0":
+"@aws-cdk/aws-iam@1.137.0", "@aws-cdk/aws-iam@^1.137.0":
   version "1.137.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-iam/-/aws-iam-1.137.0.tgz#a57cf38407c63485e52c903ac343a75c16bc0e73"
   integrity sha512-SIqiojkDiTY0DJiF0QDxR37/ZLXTEGZy4S2dsAbDKN7b4XVEPB7G4YBUhn8cHNykc3NNuWdcsKBrGcH+qYKFGA==
@@ -133,7 +133,7 @@
     "@aws-cdk/cx-api" "1.137.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-lambda@*":
+"@aws-cdk/aws-lambda@^1.137.0":
   version "1.137.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-lambda/-/aws-lambda-1.137.0.tgz#a6fb529326634b14d131d3302b0f71dc9eb89f6a"
   integrity sha512-g3APhaR3rYpaF0U86MU0P3iQP1q+tP8sG6Kmh5wG7qor8umsWUQ1+iVOM7TA+a8H+q33O/FHw0eEHE2MHCtSYA==
@@ -158,7 +158,7 @@
     "@aws-cdk/region-info" "1.137.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-logs@*", "@aws-cdk/aws-logs@1.137.0":
+"@aws-cdk/aws-logs@1.137.0", "@aws-cdk/aws-logs@^1.137.0":
   version "1.137.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-logs/-/aws-logs-1.137.0.tgz#79447cbb7f5df034b3e92c8a77b04d7c2a84390a"
   integrity sha512-usS6GdOFoEB/gRVD74zuOdAYye840LGacz7l+flYzq7ZvanO9Rdtn2wlpM3z1QwwxUu+46KCNHByYShjQvFxrQ==
@@ -171,7 +171,7 @@
     "@aws-cdk/cx-api" "1.137.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-networkfirewall@*":
+"@aws-cdk/aws-networkfirewall@^1.137.0":
   version "1.137.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-networkfirewall/-/aws-networkfirewall-1.137.0.tgz#25087e6563cc7ad4f6c923cc6644e63301bae097"
   integrity sha512-ykA+s7Tas3NRFrRBLGSiGUp98q6IwP5cUsGCbF68OIyZDl0R6pBxT4Ib7kDvI6/VnmQ79sLwxm2wCggwHBdl9w==
@@ -241,7 +241,7 @@
     jsonschema "^1.4.0"
     semver "^7.3.5"
 
-"@aws-cdk/core@*", "@aws-cdk/core@1.137.0":
+"@aws-cdk/core@1.137.0", "@aws-cdk/core@^1.137.0":
   version "1.137.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/core/-/core-1.137.0.tgz#050ccfdb83356babe3f76aee8fabafb7a1d80fed"
   integrity sha512-1h1f4dZipq9p4AxWEbiM4bcd+RpiPW2WMFCRfwj4qYsApbRupz+BITk7u3vaOIYHzqXerIpbCTF9+e3pQHwCSA==
