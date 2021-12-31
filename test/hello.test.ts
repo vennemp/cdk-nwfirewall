@@ -1,5 +1,5 @@
 import { Test } from '../src';
 
 test('hello', () => {
-  expect(new Hello().sayHello()).toBe('hello, world!');
+  expect(new Test().sayHello()).toBe('hello, world!');
 });
