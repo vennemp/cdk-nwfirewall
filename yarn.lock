@@ -9,7 +9,7 @@
   dependencies:
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/cx-api" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-applicationautoscaling@1.137.0":
   version "1.137.0"
@@ -20,7 +20,7 @@
     "@aws-cdk/aws-cloudwatch" "1.137.0"
     "@aws-cdk/aws-iam" "1.137.0"
     "@aws-cdk/core" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-autoscaling-common@1.137.0":
   version "1.137.0"
@@ -29,7 +29,7 @@
   dependencies:
     "@aws-cdk/aws-iam" "1.137.0"
     "@aws-cdk/core" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-cloudwatch@1.137.0":
   version "1.137.0"
@@ -38,7 +38,7 @@
   dependencies:
     "@aws-cdk/aws-iam" "1.137.0"
     "@aws-cdk/core" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-codeguruprofiler@1.137.0":
   version "1.137.0"
@@ -47,7 +47,7 @@
   dependencies:
     "@aws-cdk/aws-iam" "1.137.0"
     "@aws-cdk/core" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-ec2@1.137.0", "@aws-cdk/aws-ec2@^1.137.0":
   version "1.137.0"
@@ -65,7 +65,7 @@
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/cx-api" "1.137.0"
     "@aws-cdk/region-info" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-ecr-assets@1.137.0":
   version "1.137.0"
@@ -78,7 +78,7 @@
     "@aws-cdk/aws-s3" "1.137.0"
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/cx-api" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
     minimatch "^3.0.4"
 
 "@aws-cdk/aws-ecr@1.137.0":
@@ -89,7 +89,7 @@
     "@aws-cdk/aws-events" "1.137.0"
     "@aws-cdk/aws-iam" "1.137.0"
     "@aws-cdk/core" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-efs@1.137.0":
   version "1.137.0"
@@ -102,7 +102,7 @@
     "@aws-cdk/cloud-assembly-schema" "1.137.0"
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/cx-api" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-events@1.137.0":
   version "1.137.0"
@@ -111,7 +111,7 @@
   dependencies:
     "@aws-cdk/aws-iam" "1.137.0"
     "@aws-cdk/core" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-iam@1.137.0", "@aws-cdk/aws-iam@^1.137.0":
   version "1.137.0"
@@ -120,7 +120,7 @@
   dependencies:
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/region-info" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-kms@1.137.0":
   version "1.137.0"
@@ -131,7 +131,7 @@
     "@aws-cdk/cloud-assembly-schema" "1.137.0"
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/cx-api" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-lambda@^1.137.0":
   version "1.137.0"
@@ -156,7 +156,7 @@
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/cx-api" "1.137.0"
     "@aws-cdk/region-info" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-logs@1.137.0", "@aws-cdk/aws-logs@^1.137.0":
   version "1.137.0"
@@ -169,7 +169,7 @@
     "@aws-cdk/aws-s3-assets" "1.137.0"
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/cx-api" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-networkfirewall@^1.137.0":
   version "1.137.0"
@@ -189,7 +189,7 @@
     "@aws-cdk/aws-s3" "1.137.0"
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/cx-api" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-s3@1.137.0":
   version "1.137.0"
@@ -201,7 +201,7 @@
     "@aws-cdk/aws-kms" "1.137.0"
     "@aws-cdk/core" "1.137.0"
     "@aws-cdk/cx-api" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-signer@1.137.0":
   version "1.137.0"
@@ -209,7 +209,7 @@
   integrity sha512-C4fR/2Y/NnfmhSxf1xY/R3L7ItaDV7PMhDD5h28MwIfpjXA+FTdc42qXvngczNHMBwRBbwxUNfdoup5+aYPyWw==
   dependencies:
     "@aws-cdk/core" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-sqs@1.137.0":
   version "1.137.0"
@@ -220,7 +220,7 @@
     "@aws-cdk/aws-iam" "1.137.0"
     "@aws-cdk/aws-kms" "1.137.0"
     "@aws-cdk/core" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/aws-ssm@1.137.0":
   version "1.137.0"
@@ -231,7 +231,7 @@
     "@aws-cdk/aws-kms" "1.137.0"
     "@aws-cdk/cloud-assembly-schema" "1.137.0"
     "@aws-cdk/core" "1.137.0"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
 
 "@aws-cdk/cloud-assembly-schema@1.137.0":
   version "1.137.0"
@@ -250,7 +250,7 @@
     "@aws-cdk/cx-api" "1.137.0"
     "@aws-cdk/region-info" "1.137.0"
     "@balena/dockerignore" "^1.0.2"
-    constructs "^3.3.69"
+    constructs "^10.0.5"
     fs-extra "^9.1.0"
     ignore "^5.1.9"
     minimatch "^3.0.4"
