@@ -50,6 +50,7 @@
     },
     {
       "name": "constructs",
+      "version": "10.0.5",
       "type": "build"
     },
     {
@@ -172,10 +173,6 @@
     },
     {
       "name": "@aws-cdk/core",
-      "type": "runtime"
-    },
-    {
-      "name": "constructs",
       "type": "runtime"
     }
   ],
