@@ -80,6 +80,7 @@
     "awscdk",
     "cdk",
     "firewall",
+    "netsec",
     "network-automation",
     "network-security"
   ],
