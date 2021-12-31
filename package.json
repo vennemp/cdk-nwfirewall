@@ -2,7 +2,7 @@
   "name": "cdk-nwfirewall",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mvenen/cdk-nwfirewall.git"
+    "url": "https://github.com/vennemp/cdk-nwfirewall.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -30,7 +30,7 @@
   },
   "author": {
     "name": "Matthew Venne",
-    "email": "mvenen@stackarmor.com",
+    "email": "vennemp@gmail.com",
     "organization": false
   },
   "devDependencies": {
@@ -57,11 +57,31 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
+    "@aws-cdk/aws-ec2": "^1.137.0",
+    "@aws-cdk/aws-iam": "^1.137.0",
+    "@aws-cdk/aws-lambda": "^1.137.0",
+    "@aws-cdk/aws-logs": "^1.137.0",
+    "@aws-cdk/aws-networkfirewall": "^1.137.0",
+    "@aws-cdk/core": "^1.137.0",
     "aws-cdk-lib": "^2.1.0",
     "constructs": "^10.0.5"
   },
+  "dependencies": {
+    "@aws-cdk/aws-ec2": "^1.137.0",
+    "@aws-cdk/aws-iam": "^1.137.0",
+    "@aws-cdk/aws-lambda": "^1.137.0",
+    "@aws-cdk/aws-logs": "^1.137.0",
+    "@aws-cdk/aws-networkfirewall": "^1.137.0",
+    "@aws-cdk/core": "^1.137.0"
+  },
   "keywords": [
-    "cdk"
+    "aws",
+    "aws-cdk",
+    "awscdk",
+    "cdk",
+    "firewall",
+    "network-automation",
+    "network-security"
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
