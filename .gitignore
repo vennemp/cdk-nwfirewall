@@ -8,6 +8,7 @@
 !/package.json
 !/LICENSE
 !/.npmignore
+package-lock.json
 logs
 *.log
 npm-debug.log*

@@ -5,6 +5,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   authorAddress: 'vennemp@gmail.com',
   cdkVersion: '2.1.0',
   docgen: true,
+  releaseToNpm: true,
   keywords: ['aws', 'awscdk', 'aws-cdk', 'cdk', 'firewall', 'network-automation', 'network-security'],
   AwsCdkDeps: ['@aws-cdk/core', '@aws-cdk/aws-ec2', '@aws-cdk/aws-iam', '@aws-cdk/aws-lambda', '@aws-cdk/aws-logs', '@aws-cdk/aws-networkfirewall'],
   defaultReleaseBranch: 'main',
