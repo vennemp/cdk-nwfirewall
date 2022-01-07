@@ -9,12 +9,6 @@ import * as fw from '@aws-cdk/aws-networkfirewall';
 import * as cdk from '@aws-cdk/core';
 import { CustomResource } from '@aws-cdk/core';
 
-export class Test {
-  public sayHello() {
-    return 'hello, world!';
-  }
-}
-
 export class FWVPCProps {
   readonly cidr?: string;
   /**
