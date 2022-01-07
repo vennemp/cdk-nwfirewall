@@ -3,7 +3,7 @@ import { FirewallStack } from '../src';
 import '@aws-cdk/assert/jest';
 
 
-test('create test firewall', () => {
+test('run firewall test', () => {
   const app = new cdk.App();
   const stack = new cdk.Stack(app);
   const firewall = new FirewallStack(stack, 'firewall', {});
