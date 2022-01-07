@@ -185,14 +185,14 @@ Name of subnets hosting AWS NFW.
 ---
 
 
-### Hello <a name="cdk-nwfirewall.Hello" id="cdknwfirewallhello"></a>
+### Test <a name="cdk-nwfirewall.Test" id="cdknwfirewalltest"></a>
 
-#### Initializers <a name="cdk-nwfirewall.Hello.Initializer" id="cdknwfirewallhelloinitializer"></a>
+#### Initializers <a name="cdk-nwfirewall.Test.Initializer" id="cdknwfirewalltestinitializer"></a>
 
 ```typescript
-import { Hello } from 'cdk-nwfirewall'
+import { Test } from 'cdk-nwfirewall'
 
-new Hello()
+new Test()
 ```
 
 | **Name** | **Type** | **Description** |
@@ -204,11 +204,11 @@ new Hello()
 
 | **Name** | **Description** |
 | --- | --- |
-| [`sayHello`](#cdknwfirewallhellosayhello) | *No description.* |
+| [`sayHello`](#cdknwfirewalltestsayhello) | *No description.* |
 
 ---
 
-##### `sayHello` <a name="cdk-nwfirewall.Hello.sayHello" id="cdknwfirewallhellosayhello"></a>
+##### `sayHello` <a name="cdk-nwfirewall.Test.sayHello" id="cdknwfirewalltestsayhello"></a>
 
 ```typescript
 public sayHello()
