@@ -49,7 +49,7 @@ export class FWVPCProps {
 }
 export class FirewallStack extends cdk.Stack {
 
-  constructor(scope: cdk.Construct, id: string, fwprops: FWVPCProps) {
+  constructor(scope: cdk.Stack, id: string, fwprops: FWVPCProps) {
     super(scope, id );
 
     // The code that defines your stack goes here
@@ -97,8 +97,6 @@ export class FirewallStack extends cdk.Stack {
     const pubsubnets = vpc.selectSubnets({
       subnetGroupName: fwprops.publicsubnetname ??'public',
     });
-
-
     const domainallowlist = new fw.CfnRuleGroup(this, 'domain-allowlist', {
       capacity: 1000,
       ruleGroupName: 'domain-allowlist',
