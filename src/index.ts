@@ -1,5 +1,5 @@
 import * as ec2 from '@aws-cdk/aws-ec2';
-import { CfnRoute } from '@aws-cdk/aws-ec2';
+import { CfnRoute, Vpc } from '@aws-cdk/aws-ec2';
 import * as iam from '@aws-cdk/aws-iam';
 import * as lambda from '@aws-cdk/aws-lambda';
 import { Code } from '@aws-cdk/aws-lambda';
@@ -48,8 +48,8 @@ export class FWVPCProps {
    * provide a list of domains you wish to whitelist, this is optional as a list of commonly used domains for patching is included.
    */
 }
+export class FirewallStack extends cdk.Resource {
 
-export class FirewallStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, fwprops: FWVPCProps) {
     super(scope, id );
 
@@ -82,6 +82,7 @@ export class FirewallStack extends cdk.Stack {
       ],
     },
     );
+
     //const igw = new CfnInternetGateway(this, 'igw', {})
     new ec2.FlowLog(this, 'FlowLog', {
       resourceType: ec2.FlowLogResourceType.fromVpc(vpc),
@@ -97,6 +98,8 @@ export class FirewallStack extends cdk.Stack {
     const pubsubnets = vpc.selectSubnets({
       subnetGroupName: fwprops.publicsubnetname ??'public',
     });
+
+
     const domainallowlist = new fw.CfnRuleGroup(this, 'domain-allowlist', {
       capacity: 1000,
       ruleGroupName: 'domain-allowlist',
@@ -149,8 +152,47 @@ export class FirewallStack extends cdk.Stack {
       ruleGroup: {
         rulesSource: {
           statelessRulesAndCustomActions: {
-            statelessRules: [{
-              priority: 100,
+            statelessRules: [
+              {
+                priority: 1,
+                ruleDefinition: {
+                  actions: ['aws:forward_to_sfe'],
+                  matchAttributes: {
+                    destinations: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    sourcePorts: [{
+                      toPort: 80,
+                      fromPort: 80
+                    },
+                    {
+                      toPort: 443,
+                      fromPort: 443
+                    },
+                    {
+                      toPort: 123,
+                      fromPort: 123
+                    },
+                    {
+                      toPort: 53,
+                      fromPort: 53
+                    },
+                  ],
+                    sources: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    protocols: [6,17],
+                    destinationPorts: [
+                      {
+                        fromPort: 1024,
+                        toPort: 65535,
+                      },
+                    ],
+                  },
+                },
+              },
+              {
+              priority: 1,
               ruleDefinition: {
                 actions: ['aws:forward_to_sfe'],
                 matchAttributes: {
@@ -171,7 +213,7 @@ export class FirewallStack extends cdk.Stack {
               },
             },
             {
-              priority: 200,
+              priority: 2,
               ruleDefinition: {
                 actions: ['aws:forward_to_sfe'],
                 matchAttributes: {
@@ -240,7 +282,7 @@ export class FirewallStack extends cdk.Stack {
     const fw_policy = new fw.CfnFirewallPolicy(this, 'fw_policy', {
       firewallPolicyName: 'network-firewall-policy',
       firewallPolicy: {
-        statelessDefaultActions: ['aws:forward_to_sfe'],
+        statelessDefaultActions: ['aws:drop'],
         statelessFragmentDefaultActions: ['aws:pass'],
         statelessRuleGroupReferences: [{
           priority: 100,
