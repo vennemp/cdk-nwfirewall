@@ -162,25 +162,24 @@ export class FirewallStack extends cdk.Resource {
                     }],
                     sourcePorts: [{
                       toPort: 80,
-                      fromPort: 80
+                      fromPort: 80,
                     },
                     {
                       toPort: 443,
-                      fromPort: 443
+                      fromPort: 443,
                     },
                     {
                       toPort: 123,
-                      fromPort: 123
+                      fromPort: 123,
                     },
                     {
                       toPort: 53,
-                      fromPort: 53
-                    },
-                  ],
+                      fromPort: 53,
+                    }],
                     sources: [{
                       addressDefinition: '0.0.0.0/0',
                     }],
-                    protocols: [6,17],
+                    protocols: [6, 17],
                     destinationPorts: [
                       {
                         fromPort: 1024,
@@ -191,89 +190,90 @@ export class FirewallStack extends cdk.Resource {
                 },
               },
               {
-              priority: 1,
-              ruleDefinition: {
-                actions: ['aws:forward_to_sfe'],
-                matchAttributes: {
-                  destinations: [{
-                    addressDefinition: '0.0.0.0/0',
-                  }],
-                  sources: [{
-                    addressDefinition: '0.0.0.0/0',
-                  }],
-                  protocols: [6],
-                  destinationPorts: [
-                    {
-                      fromPort: 443,
-                      toPort: 443,
-                    },
-                  ],
+                priority: 1,
+                ruleDefinition: {
+                  actions: ['aws:forward_to_sfe'],
+                  matchAttributes: {
+                    destinations: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    sources: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    protocols: [6],
+                    destinationPorts: [
+                      {
+                        fromPort: 443,
+                        toPort: 443,
+                      },
+                    ],
+                  },
                 },
               },
-            },
-            {
-              priority: 2,
-              ruleDefinition: {
-                actions: ['aws:forward_to_sfe'],
-                matchAttributes: {
-                  destinations: [{
-                    addressDefinition: '0.0.0.0/0',
-                  }],
-                  sources: [{
-                    addressDefinition: '0.0.0.0/0',
-                  }],
-                  protocols: [17],
-                  destinationPorts: [
-                    {
-                      fromPort: 123,
-                      toPort: 123,
-                    },
-                  ],
+              {
+                priority: 2,
+                ruleDefinition: {
+                  actions: ['aws:forward_to_sfe'],
+                  matchAttributes: {
+                    destinations: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    sources: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    protocols: [17],
+                    destinationPorts: [
+                      {
+                        fromPort: 123,
+                        toPort: 123,
+                      },
+                    ],
+                  },
                 },
               },
-            },
-            {
-              priority: 300,
-              ruleDefinition: {
-                actions: ['aws:forward_to_sfe'],
-                matchAttributes: {
-                  destinations: [{
-                    addressDefinition: '0.0.0.0/0',
-                  }],
-                  sources: [{
-                    addressDefinition: '0.0.0.0/0',
-                  }],
-                  protocols: [6],
-                  destinationPorts: [
-                    {
-                      fromPort: 80,
-                      toPort: 80,
-                    },
-                  ],
+              {
+                priority: 300,
+                ruleDefinition: {
+                  actions: ['aws:forward_to_sfe'],
+                  matchAttributes: {
+                    destinations: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    sources: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    protocols: [6],
+                    destinationPorts: [
+                      {
+                        fromPort: 80,
+                        toPort: 80,
+                      },
+                    ],
+                  },
                 },
               },
-            },
-            {
-              priority: 400,
-              ruleDefinition: {
-                actions: ['aws:forward_to_sfe'],
-                matchAttributes: {
-                  destinations: [{
-                    addressDefinition: '0.0.0.0/0',
-                  }],
-                  sources: [{
-                    addressDefinition: '0.0.0.0/0',
-                  }],
-                  protocols: [6, 17],
-                  destinationPorts: [
-                    {
-                      fromPort: 53,
-                      toPort: 53,
-                    },
-                  ],
+              {
+                priority: 400,
+                ruleDefinition: {
+                  actions: ['aws:forward_to_sfe'],
+                  matchAttributes: {
+                    destinations: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    sources: [{
+                      addressDefinition: '0.0.0.0/0',
+                    }],
+                    protocols: [6, 17],
+                    destinationPorts: [
+                      {
+                        fromPort: 53,
+                        toPort: 53,
+                      },
+                    ],
+                  },
                 },
               },
-            }],
+            ],
           },
         },
       },
