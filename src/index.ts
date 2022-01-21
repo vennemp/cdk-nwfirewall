@@ -515,7 +515,7 @@ def lambda_handler(event, context):
       });
       createVPCERoutePublicRouteTable.node.addDependency(deleteroute);
       deleteroute.node.addDependency(vpc);
-      new CfnRoute(this, 'igwroute'+i, {
+      new ec2.CfnRoute(this, 'igwroute'+i, {
         routeTableId: fwsubnets.subnets[i].routeTable.routeTableId,
         destinationCidrBlock: '0.0.0.0/0',
         gatewayId: igw,
