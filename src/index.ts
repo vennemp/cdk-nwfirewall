@@ -47,7 +47,7 @@ export class FWVPCProps {
    * provide a list of domains you wish to whitelist, this is optional as a list of commonly used domains for patching is included.
    */
 }
-export class FirewallStack extends cdk.Resource {
+export class FirewallStack extends cdk.Stack {
 
   constructor(scope: cdk.Construct, id: string, fwprops: FWVPCProps) {
     super(scope, id );
