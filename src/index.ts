@@ -188,7 +188,7 @@ export class FirewallStack extends cdk.Stack {
                 },
               },
               {
-                priority: 1,
+                priority: 2,
                 ruleDefinition: {
                   actions: ['aws:forward_to_sfe'],
                   matchAttributes: {
@@ -209,7 +209,7 @@ export class FirewallStack extends cdk.Stack {
                 },
               },
               {
-                priority: 2,
+                priority: 3,
                 ruleDefinition: {
                   actions: ['aws:forward_to_sfe'],
                   matchAttributes: {
@@ -230,7 +230,7 @@ export class FirewallStack extends cdk.Stack {
                 },
               },
               {
-                priority: 300,
+                priority: 4,
                 ruleDefinition: {
                   actions: ['aws:forward_to_sfe'],
                   matchAttributes: {
@@ -251,7 +251,7 @@ export class FirewallStack extends cdk.Stack {
                 },
               },
               {
-                priority: 400,
+                priority: 5,
                 ruleDefinition: {
                   actions: ['aws:forward_to_sfe'],
                   matchAttributes: {
