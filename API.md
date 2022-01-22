@@ -9,12 +9,12 @@
 ```typescript
 import { FirewallStack } from 'cdk-nwfirewall'
 
-new FirewallStack(scope: Construct, id: string, fwprops: FWVPCProps)
+new FirewallStack(scope: Stack, id: string, fwprops: FWVPCProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#cdknwfirewallfirewallstackparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct) | *No description.* |
+| [`scope`](#cdknwfirewallfirewallstackparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack) | *No description.* |
 | [`id`](#cdknwfirewallfirewallstackparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`fwprops`](#cdknwfirewallfirewallstackparameterfwprops)<span title="Required">*</span> | [`cdk-nwfirewall.FWVPCProps`](#cdk-nwfirewall.FWVPCProps) | *No description.* |
 
@@ -22,7 +22,7 @@ new FirewallStack(scope: Construct, id: string, fwprops: FWVPCProps)
 
 ##### `scope`<sup>Required</sup> <a name="cdk-nwfirewall.FirewallStack.parameter.scope" id="cdknwfirewallfirewallstackparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack)
 
 ---
 
@@ -183,38 +183,6 @@ public readonly publicsubnetname: string;
 Name of subnets hosting AWS NFW.
 
 ---
-
-
-### Test <a name="cdk-nwfirewall.Test" id="cdknwfirewalltest"></a>
-
-#### Initializers <a name="cdk-nwfirewall.Test.Initializer" id="cdknwfirewalltestinitializer"></a>
-
-```typescript
-import { Test } from 'cdk-nwfirewall'
-
-new Test()
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-
----
-
-#### Methods <a name="Methods" id="methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| [`sayHello`](#cdknwfirewalltestsayhello) | *No description.* |
-
----
-
-##### `sayHello` <a name="cdk-nwfirewall.Test.sayHello" id="cdknwfirewalltestsayhello"></a>
-
-```typescript
-public sayHello()
-```
-
-
 
 
 
