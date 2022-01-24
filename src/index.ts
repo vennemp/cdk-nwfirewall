@@ -109,6 +109,11 @@ export class FirewallStack extends cdk.Stack {
               '.docker.com',
               '.microsoft.com',
               '.amazonaws.com',
+              'telemetry.invicti.com',
+              'ctldl.windowsupdate.com',
+              'updates.acunetix.com',
+              'downloads.nessus.org',
+              'plugins.nessus.org',
               '.aws.amazon.com',
               '.fedoraproject.org',
               'rhui3.us-east-1.aws.ce.redhat.com',
@@ -315,6 +320,12 @@ export class FirewallStack extends cdk.Stack {
           },
           logDestinationType: 'CloudWatchLogs',
           logType: 'FLOW',
+        },{
+          logDestination: {
+            logGroup: fwlog.logGroupName,
+          },
+          logDestinationType: 'CloudWatchLogs',
+          logType: 'ALERT',
         }],
       },
     });
