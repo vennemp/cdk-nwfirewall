@@ -320,7 +320,8 @@ export class FirewallStack extends cdk.Stack {
           },
           logDestinationType: 'CloudWatchLogs',
           logType: 'FLOW',
-        },{
+        },
+        {
           logDestination: {
             logGroup: fwlog.logGroupName,
           },
