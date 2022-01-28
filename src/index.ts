@@ -572,7 +572,7 @@ def lambda_handler(event, context):
    * Use only if used default subnet names
    */
   }
-  public SelectSubnets(subnetType: string): ec2.SubnetSelection {
+  public selectSubnets(subnetType: string): ec2.SubnetSelection {
     return this.vpc.selectSubnets({
       subnetGroupName: subnetType,
     });
