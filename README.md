@@ -31,5 +31,12 @@ const app = new cdk.App();
 new FirewallStack(app, 'FirewallStack', {}, {cidr: '192.168.0.0/24', privatesubnetname: 'tgw-attach'});
 ```
 
+Example of method for extracting values from construct.
+```typescript
+  new ec2.CfnNatGateway(this, 'nat-gw', {
+    subnetId: firewall.listPublicSubnets().subnets[0].subnetId,
+  });
+```
+
 Blog: https://medium.com/@matthewvenne/cdk-once-more-unto-the-breach-f2673cf219a6
 
