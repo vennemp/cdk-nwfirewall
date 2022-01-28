@@ -8,7 +8,7 @@ import * as fw from '@aws-cdk/aws-networkfirewall';
 import * as cdk from '@aws-cdk/core';
 import { CustomResource } from '@aws-cdk/core';
 
-export class FWVPCProps {
+export interface FWVPCProps {
   readonly cidr?: string;
   /**
    * CIDR block for the VPC - would recommend using at least a /24
@@ -46,8 +46,15 @@ export class FWVPCProps {
   /**
    * provide a list of domains you wish to whitelist, this is optional as a list of commonly used domains for patching is included.
    */
+  readonly appenddomains?: boolean;
+  /**
+   * Boolean switch to append list of domains of to default list rather than overwrite them..
+   */
 }
+
 export class FirewallStack extends cdk.Stack {
+
+  private vpc: ec2.Vpc;
 
   constructor(scope: cdk.Stack, id: string, fwprops: FWVPCProps) {
     super(scope, id );
@@ -59,7 +66,8 @@ export class FirewallStack extends cdk.Stack {
     const role = new iam.Role(this, 'flow-logs-role', {
       assumedBy: new iam.ServicePrincipal('vpc-flow-logs.amazonaws.com'),
     });
-    const vpc = new ec2.Vpc(this, 'firewall-vpc', {
+
+    this.vpc = new ec2.Vpc(this, 'firewall-vpc', {
       cidr: fwprops.cidr ?? '10.0.0.0/24',
       maxAzs: fwprops.maxAzs ?? 3,
       subnetConfiguration: [
@@ -82,21 +90,65 @@ export class FirewallStack extends cdk.Stack {
     },
     );
 
-    //const igw = new CfnInternetGateway(this, 'igw', {})
     new ec2.FlowLog(this, 'FlowLog', {
-      resourceType: ec2.FlowLogResourceType.fromVpc(vpc),
+      resourceType: ec2.FlowLogResourceType.fromVpc(this.vpc),
       destination: ec2.FlowLogDestination.toCloudWatchLogs(logGroup, role),
     });
+    const igw = this.vpc.internetGatewayId;
 
-    const igw = vpc.internetGatewayId;
-
-
-    const fwsubnets = vpc.selectSubnets({
+    const fwsubnets = this.vpc.selectSubnets({
       subnetGroupName: fwprops.firewallsubnetname ?? 'firewall',
     });
-    const pubsubnets = vpc.selectSubnets({
-      subnetGroupName: fwprops.publicsubnetname ??'public',
+    const pubsubnets = this.vpc.selectSubnets({
+      subnetGroupName: fwprops.publicsubnetname ?? 'public',
     });
+
+    let listdomains: string[] = [
+      '.docker.com',
+      '.microsoft.com',
+      '.amazonaws.com',
+      'telemetry.invicti.com',
+      'ctldl.windowsupdate.com',
+      'updates.acunetix.com',
+      'downloads.nessus.org',
+      'plugins.nessus.org',
+      '.aws.amazon.com',
+      '.fedoraproject.org',
+      'rhui3.us-east-1.aws.ce.redhat.com',
+      '.download.windowsupdate.com',
+      '.update.microsoft.com',
+      '.windowsupdate.microsoft.com',
+      '.slack.com',
+      '.windows.com',
+      '.duosecurity.com',
+      '.okta.com',
+      '.oktacdn.com',
+      '.splunk.com',
+      '.trendmicro.com',
+      'idp.login.splunk.com',
+      'manage.trendmicro.com',
+      'crl3.digicert.com',
+      'crl.godaddy.com',
+      'certificate.godaddy.com',
+      'ocsp.godaddy.com',
+      'crl4.digicert.com',
+      '.digicert.com',
+      '.rootca1.amazontrust.com',
+      '.rootg2.amazontrust.com',
+      '.amazontrust.com',
+      '.sca1a.amazontrust.com',
+      '.sca1b.amazontrust.com',
+      'powershellgallery.com',
+    ];
+
+    if (fwprops.appenddomains == true && fwprops.domainlist != null) {
+      fwprops.domainlist.forEach(element => {
+        listdomains.push(element);
+      });
+    }
+    if (fwprops.appenddomains == false && fwprops.domainlist != null) {
+      listdomains = fwprops.domainlist;
+    }
     const domainallowlist = new fw.CfnRuleGroup(this, 'domain-allowlist', {
       capacity: 1000,
       ruleGroupName: 'domain-allowlist',
@@ -105,43 +157,7 @@ export class FirewallStack extends cdk.Stack {
         rulesSource: {
           rulesSourceList: {
             generatedRulesType: 'ALLOWLIST',
-            targets: fwprops.domainlist ?? [
-              '.docker.com',
-              '.microsoft.com',
-              '.amazonaws.com',
-              'telemetry.invicti.com',
-              'ctldl.windowsupdate.com',
-              'updates.acunetix.com',
-              'downloads.nessus.org',
-              'plugins.nessus.org',
-              '.aws.amazon.com',
-              '.fedoraproject.org',
-              'rhui3.us-east-1.aws.ce.redhat.com',
-              '.download.windowsupdate.com',
-              '.update.microsoft.com',
-              '.windowsupdate.microsoft.com',
-              '.slack.com',
-              '.windows.com',
-              '.duosecurity.com',
-              '.okta.com',
-              '.oktacdn.com',
-              '.splunk.com',
-              '.trendmicro.com',
-              'idp.login.splunk.com',
-              'manage.trendmicro.com',
-              'crl3.digicert.com',
-              'crl.godaddy.com',
-              'certificate.godaddy.com',
-              'ocsp.godaddy.com',
-              'crl4.digicert.com',
-              '.digicert.com',
-              '.rootca1.amazontrust.com',
-              '.rootg2.amazontrust.com',
-              '.amazontrust.com',
-              '.sca1a.amazontrust.com',
-              '.sca1b.amazontrust.com',
-              'powershellgallery.com',
-            ],
+            targets: listdomains,
             targetTypes: ['TLS_SNI', 'HTTP_HOST'],
           },
         },
@@ -297,7 +313,7 @@ export class FirewallStack extends cdk.Stack {
     });
     const subnetList= [];
 
-    for (let i = 0; i < vpc.availabilityZones.length ; i++) {
+    for (let i = 0; i < this.vpc.availabilityZones.length ; i++) {
       const subnetMapping: fw.CfnFirewall.SubnetMappingProperty = { subnetId: fwsubnets.subnetIds[i] };
       subnetList.push(subnetMapping);
     }
@@ -305,7 +321,7 @@ export class FirewallStack extends cdk.Stack {
       firewallName: 'network-firewall',
       firewallPolicyArn: fw_policy.attrFirewallPolicyArn,
       subnetMappings: subnetList,
-      vpcId: vpc.vpcId,
+      vpcId: this.vpc.vpcId,
       deleteProtection: false,
       description: 'AWS Network Firewall to centrally control egress traffic',
       firewallPolicyChangeProtection: false,
@@ -331,7 +347,7 @@ export class FirewallStack extends cdk.Stack {
       },
     });
     const edgeroutetable = new ec2.CfnRouteTable(this, 'edge-route-table', {
-      vpcId: vpc.vpcId,
+      vpcId: this.vpc.vpcId,
       tags: [{
         key: 'Name',
         value: 'edge-route-table',
@@ -494,7 +510,7 @@ def lambda_handler(event, context):
     }
     //const fw_ep_array = []
     // For Loop to loop thru all the AZs
-    for (let i = 0; i < vpc.availabilityZones.length ; i++) {
+    for (let i = 0; i < this.vpc.availabilityZones.length ; i++) {
     //invokes the custom resource to look up the vpc endpoint to use for az i
       const fw_ep_az = new CustomResource(this, 'fweplookup_cr_az'+i, {
         serviceToken: fweplookup_lambda.functionArn,
@@ -524,21 +540,17 @@ def lambda_handler(event, context):
         },
       });
       createVPCERoutePublicRouteTable.node.addDependency(deleteroute);
-      deleteroute.node.addDependency(vpc);
+      deleteroute.node.addDependency(this.vpc);
       new ec2.CfnRoute(this, 'igwroute'+i, {
         routeTableId: fwsubnets.subnets[i].routeTable.routeTableId,
         destinationCidrBlock: '0.0.0.0/0',
         gatewayId: igw,
       });
     }
-    //adds default route to igw for all firewall endpoint subnets
-
-    //  for (let subnet of vpc.isolatedSubnets) {
-    //   new CfnRoute(this, subnet.node.addr, {
-    //      routeTableId: subnet.routeTable.routeTableId,
-    //      destinationCidrBlock: "0.0.0.0/0",
-    //      gatewayId: igw
-    //    })
-    //  }
+  }
+  public listPublicSubnets(): ec2.SubnetSelection {
+    return this.vpc.selectSubnets({
+      subnetGroupName: 'public',
+    });
   }
 }

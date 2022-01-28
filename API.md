@@ -38,34 +38,40 @@ new FirewallStack(scope: Stack, id: string, fwprops: FWVPCProps)
 
 ---
 
+#### Methods <a name="Methods" id="methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| [`listPublicSubnets`](#cdknwfirewallfirewallstacklistpublicsubnets) | *No description.* |
+
+---
+
+##### `listPublicSubnets` <a name="cdk-nwfirewall.FirewallStack.listPublicSubnets" id="cdknwfirewallfirewallstacklistpublicsubnets"></a>
+
+```typescript
+public listPublicSubnets()
+```
 
 
 
 
-
-## Classes <a name="Classes" id="classes"></a>
+## Structs <a name="Structs" id="structs"></a>
 
 ### FWVPCProps <a name="cdk-nwfirewall.FWVPCProps" id="cdknwfirewallfwvpcprops"></a>
 
-#### Initializers <a name="cdk-nwfirewall.FWVPCProps.Initializer" id="cdknwfirewallfwvpcpropsinitializer"></a>
+#### Initializer <a name="[object Object].Initializer" id="object-objectinitializer"></a>
 
 ```typescript
 import { FWVPCProps } from 'cdk-nwfirewall'
 
-new FWVPCProps()
+const fWVPCProps: FWVPCProps = { ... }
 ```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-
----
-
-
 
 #### Properties <a name="Properties" id="properties"></a>
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
+| [`appenddomains`](#cdknwfirewallfwvpcpropspropertyappenddomains) | `boolean` | provide a list of domains you wish to whitelist, this is optional as a list of commonly used domains for patching is included. |
 | [`cidr`](#cdknwfirewallfwvpcpropspropertycidr) | `string` | *No description.* |
 | [`domainlist`](#cdknwfirewallfwvpcpropspropertydomainlist) | `string`[] | CIDR mask of private subnets - e.g. 28. |
 | [`firewallmask`](#cdknwfirewallfwvpcpropspropertyfirewallmask) | `number` | Name of private subnets that require NAT to reach internet - if you are using the firewall as an egress VPC with TGW, this is where tgw-attachment would go. |
@@ -75,6 +81,18 @@ new FWVPCProps()
 | [`privatesubnetname`](#cdknwfirewallfwvpcpropspropertyprivatesubnetname) | `string` | Name of public subnets - where NAT GW and resources requiring public IPs. |
 | [`publicmask`](#cdknwfirewallfwvpcpropspropertypublicmask) | `number` | CIDR mask of firewall subnets - e.g. 28. |
 | [`publicsubnetname`](#cdknwfirewallfwvpcpropspropertypublicsubnetname) | `string` | Name of subnets hosting AWS NFW. |
+
+---
+
+##### `appenddomains`<sup>Optional</sup> <a name="cdk-nwfirewall.FWVPCProps.property.appenddomains" id="cdknwfirewallfwvpcpropspropertyappenddomains"></a>
+
+```typescript
+public readonly appenddomains: boolean;
+```
+
+- *Type:* `boolean`
+
+provide a list of domains you wish to whitelist, this is optional as a list of commonly used domains for patching is included.
 
 ---
 
