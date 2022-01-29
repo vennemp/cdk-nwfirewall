@@ -548,36 +548,22 @@ def lambda_handler(event, context):
       });
     }
   }
-  public listPublicSubnets(): ec2.SubnetSelection {
-    return this.vpc.selectSubnets({
-      subnetGroupName: 'public',
-    });
+  public listPublicSubnets(): ec2.ISubnet[] {
+    return this.vpc.publicSubnets;
   }
   /**
    * Use only if used default subnet names
    */
-  public listPrivateSubnets(): ec2.SubnetSelection {
-    return this.vpc.selectSubnets({
-      subnetGroupName: 'private',
-    });
+  public listPrivateSubnets(): ec2.ISubnet[] {
+    return this.vpc.privateSubnets;
   }
   /**
    * Use only if used default subnet names
    */
-  public listFirewallSubnets(): ec2.SubnetSelection {
-    return this.vpc.selectSubnets({
-      subnetGroupName: 'firewall',
-    });
+  public listFirewallSubnets(): ec2.ISubnet[] {
+    return this.vpc.isolatedSubnets;
   /**
    * Use only if used default subnet names
-   */
-  }
-  public selectSubnets(subnetType: string): ec2.SubnetSelection {
-    return this.vpc.selectSubnets({
-      subnetGroupName: subnetType,
-    });
-  /**
-   * Use if you did not use the default subnet names
    */
   }
   public vpcId(): String {

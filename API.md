@@ -45,7 +45,6 @@ new FirewallStack(scope: Stack, id: string, fwprops: FWVPCProps)
 | [`listFirewallSubnets`](#cdknwfirewallfirewallstacklistfirewallsubnets) | Use only if used default subnet names. |
 | [`listPrivateSubnets`](#cdknwfirewallfirewallstacklistprivatesubnets) | Use only if used default subnet names. |
 | [`listPublicSubnets`](#cdknwfirewallfirewallstacklistpublicsubnets) | *No description.* |
-| [`selectSubnets`](#cdknwfirewallfirewallstackselectsubnets) | *No description.* |
 | [`vpcId`](#cdknwfirewallfirewallstackvpcid) | *No description.* |
 | [`vpcObj`](#cdknwfirewallfirewallstackvpcobj) | *No description.* |
 
@@ -68,18 +67,6 @@ public listPrivateSubnets()
 ```typescript
 public listPublicSubnets()
 ```
-
-##### `selectSubnets` <a name="cdk-nwfirewall.FirewallStack.selectSubnets" id="cdknwfirewallfirewallstackselectsubnets"></a>
-
-```typescript
-public selectSubnets(subnetType: string)
-```
-
-###### `subnetType`<sup>Required</sup> <a name="cdk-nwfirewall.FirewallStack.parameter.subnetType" id="cdknwfirewallfirewallstackparametersubnettype"></a>
-
-- *Type:* `string`
-
----
 
 ##### `vpcId` <a name="cdk-nwfirewall.FirewallStack.vpcId" id="cdknwfirewallfirewallstackvpcid"></a>
 
