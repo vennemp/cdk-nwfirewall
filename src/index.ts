@@ -6,7 +6,8 @@ import * as logs from '@aws-cdk/aws-logs';
 import * as fw from '@aws-cdk/aws-networkfirewall';
 //import * as cr from '@aws-cdk/custom-resources';
 import * as cdk from '@aws-cdk/core';
-import { CustomResource } from '@aws-cdk/core';
+import { Construct } from 'constructs';
+//import { CustomResource } from '@aws-cdk/core';
 
 export interface FWVPCProps {
   readonly cidr?: string;
@@ -52,11 +53,11 @@ export interface FWVPCProps {
    */
 }
 
-export class FirewallStack extends cdk.Stack {
+export class FirewallStack extends cdk.Resource {
 
   private vpc: ec2.Vpc;
 
-  constructor(scope: cdk.Stack, id: string, fwprops: FWVPCProps) {
+  constructor(scope: Construct, id: string, fwprops: FWVPCProps) {
     super(scope, id );
 
     // The code that defines your stack goes here
@@ -567,7 +568,7 @@ def lambda_handler(event, context):
    */
   }
   public vpcId(): String {
-    return this.vpc.vpcId;
+    return this.vpc.vpcId.toString();
   }
   public vpcObj(): ec2.IVpc {
     return this.vpc;

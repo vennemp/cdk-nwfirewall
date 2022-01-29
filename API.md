@@ -9,12 +9,12 @@
 ```typescript
 import { FirewallStack } from 'cdk-nwfirewall'
 
-new FirewallStack(scope: Stack, id: string, fwprops: FWVPCProps)
+new FirewallStack(scope: Resource, id: string, fwprops: FWVPCProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`scope`](#cdknwfirewallfirewallstackparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack) | *No description.* |
+| [`scope`](#cdknwfirewallfirewallstackparameterscope)<span title="Required">*</span> | [`@aws-cdk/core.Resource`](#@aws-cdk/core.Resource) | *No description.* |
 | [`id`](#cdknwfirewallfirewallstackparameterid)<span title="Required">*</span> | `string` | *No description.* |
 | [`fwprops`](#cdknwfirewallfirewallstackparameterfwprops)<span title="Required">*</span> | [`cdk-nwfirewall.FWVPCProps`](#cdk-nwfirewall.FWVPCProps) | *No description.* |
 
@@ -22,7 +22,7 @@ new FirewallStack(scope: Stack, id: string, fwprops: FWVPCProps)
 
 ##### `scope`<sup>Required</sup> <a name="cdk-nwfirewall.FirewallStack.parameter.scope" id="cdknwfirewallfirewallstackparameterscope"></a>
 
-- *Type:* [`@aws-cdk/core.Stack`](#@aws-cdk/core.Stack)
+- *Type:* [`@aws-cdk/core.Resource`](#@aws-cdk/core.Resource)
 
 ---
 
