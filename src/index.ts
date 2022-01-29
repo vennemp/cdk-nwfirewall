@@ -6,8 +6,8 @@ import * as logs from '@aws-cdk/aws-logs';
 import * as fw from '@aws-cdk/aws-networkfirewall';
 //import * as cr from '@aws-cdk/custom-resources';
 import * as cdk from '@aws-cdk/core';
+import { CustomResource } from '@aws-cdk/core';
 import { Construct } from 'constructs';
-//import { CustomResource } from '@aws-cdk/core';
 
 export interface FWVPCProps {
   readonly cidr?: string;
