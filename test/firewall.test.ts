@@ -1,4 +1,4 @@
-//import { CfnVPCEndpoint } from '@aws-cdk/aws-ec2';
+import { CfnVPCEndpoint } from '@aws-cdk/aws-ec2';
 import * as cdk from '@aws-cdk/core';
 import { FirewallStack } from '../src';
 import '@aws-cdk/assert/jest';
@@ -6,20 +6,12 @@ import '@aws-cdk/assert/jest';
 test('run firewall test', () => {
   const app = new cdk.App();
   const stack = new cdk.Stack(app);
-  new FirewallStack(stack, 'firewall', {});
-  //test one of the methods to see if returns a valid subnet
-
-  //  const cfnVPCEndpoint = new CfnVPCEndpoint(this, 'MyCfnVPCEndpoint', {
-  //    serviceName: 'serviceName',
-  //    vpcId: firewall.vpcId.toString(),
-  //    the properties below are optional
-  //    privateDnsEnabled: false,
-  //    routeTableIds: ['routeTableIds'],
-  //    securityGroupIds: ['securityGroupIds'],
-  //    subnetIds: ['subnetIds'],
-  //    vpcEndpointType: 'vpcEndpointType',
-  //  });
-  //test to see if it creates some of the expected resources
+  const fw = new FirewallStack(stack, 'firewall', {});
+  new CfnVPCEndpoint(stack, 'vpce', {
+    serviceName: 'ec2.amazonaws.com',
+    vpcId: fw.vpcId.toString(),
+    subnetIds: [fw.listPublicSubnets()[0].subnetId.toString()],
+  });
 },
 
 );

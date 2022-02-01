@@ -53,7 +53,7 @@ export interface FWVPCProps {
    */
 }
 
-export class FirewallStack extends cdk.Resource {
+export class FirewallStack extends cdk.Construct {
 
   private vpc: ec2.Vpc;
 
