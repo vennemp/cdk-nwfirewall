@@ -3,6 +3,7 @@ import * as iam from '@aws-cdk/aws-iam';
 import * as lambda from '@aws-cdk/aws-lambda';
 import { Code } from '@aws-cdk/aws-lambda';
 import * as logs from '@aws-cdk/aws-logs';
+//import * as elb from '@aws-cdk/aws-elasticloadbalancingv2';
 import * as fw from '@aws-cdk/aws-networkfirewall';
 //import * as cr from '@aws-cdk/custom-resources';
 import * as cdk from '@aws-cdk/core';
@@ -567,8 +568,9 @@ def lambda_handler(event, context):
    * Use only if used default subnet names
    */
   }
-  public vpcId(): String {
-    return this.vpc.vpcId.toString();
+
+  public vpcId(): string {
+    return this.vpc.vpcId;
   }
   public vpcObj(): ec2.IVpc {
     return this.vpc;
